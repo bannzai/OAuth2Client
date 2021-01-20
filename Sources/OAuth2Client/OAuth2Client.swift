@@ -91,7 +91,7 @@ private extension OAuth2Client {
     Future { [weak self] finalCompletion in
       guard let self = self else { return }
       Future<URL, OAuth2Error> { completion in
-        let session = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackScheme) { (url, error) in
+        let session = ASWebAuthenticationSession(url: url, callbackURLScheme: nil) { (url, error) in
           if let error = error {
             completion(.failure(OAuth2Error.authError(error as NSError)))
           } else if let url = url {
